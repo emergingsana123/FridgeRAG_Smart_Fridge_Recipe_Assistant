@@ -7,7 +7,10 @@ from typing import Any
 
 from groq import Groq
 
-_MODEL = "llama-3.3-70b-versatile"
+_MODEL_CANDIDATES = [
+    "llama-3.1-8b-instant",
+    "llama-3.3-70b-versatile",
+]
 
 _SYSTEM_PROMPT = (
     "You are a helpful home chef assistant. You suggest practical recipes using "
@@ -21,6 +24,25 @@ def _client() -> Groq:
     if not api_key:
         raise RuntimeError("GROQ_API_KEY is missing")
     return Groq(api_key=api_key)
+
+
+def _chat_with_fallback(messages: list[dict[str, str]], max_tokens: int, temperature: float) -> str:
+    client = _client()
+    last_error: Exception | None = None
+    for model in _MODEL_CANDIDATES:
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                messages=messages,
+            )
+            return response.choices[0].message.content or ""
+        except Exception as exc:
+            last_error = exc
+            continue
+
+    raise RuntimeError(f"No compatible Groq model available: {last_error}")
 
 
 def _generate_recipes_sync(fridge_items: list[dict[str, Any]]) -> str:
@@ -39,16 +61,15 @@ def _generate_recipes_sync(fridge_items: list[dict[str, Any]]) -> str:
         "Format nicely for Discord with line breaks."
     )
 
-    response = _client().chat.completions.create(
-        model=_MODEL,
-        temperature=0.7,
-        max_tokens=1500,
+    content = _chat_with_fallback(
         messages=[
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},
         ],
+        max_tokens=1500,
+        temperature=0.7,
     )
-    return response.choices[0].message.content or "I could not generate recipes right now."
+    return content or "I could not generate recipes right now."
 
 
 def _generate_expiry_alert_sync(expiring_items: list[dict[str, Any]]) -> str:
@@ -64,16 +85,15 @@ def _generate_expiry_alert_sync(expiring_items: list[dict[str, Any]]) -> str:
         "these items and suggest one quick meal idea."
     )
 
-    response = _client().chat.completions.create(
-        model=_MODEL,
-        temperature=0.7,
-        max_tokens=250,
+    content = _chat_with_fallback(
         messages=[
             {"role": "system", "content": "You are a warm and concise kitchen assistant."},
             {"role": "user", "content": prompt},
         ],
+        max_tokens=250,
+        temperature=0.7,
     )
-    return response.choices[0].message.content or "Heads up: some fridge items are close to expiry."
+    return content or "Heads up: some fridge items are close to expiry."
 
 
 async def generate_recipes(fridge_items: list[dict[str, Any]]) -> str:

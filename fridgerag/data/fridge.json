@@ -17,6 +17,14 @@
       "days_until_expiry": 5
     },
     {
+      "name": "Bananas",
+      "quantity": "1.92 lb",
+      "expiry_date": "2026-03-27",
+      "category": "fruit",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 5
+    },
+    {
       "name": "Zucchini Green",
       "quantity": "0.778kg",
       "expiry_date": "2026-03-29",
@@ -50,6 +58,14 @@
     },
     {
       "name": "Tomatoes Grape",
+      "quantity": "1 unit",
+      "expiry_date": "2026-03-29",
+      "category": "vegetable",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 7
+    },
+    {
+      "name": "Romaine Hearts",
       "quantity": "1 unit",
       "expiry_date": "2026-03-29",
       "category": "vegetable",
@@ -95,7 +111,23 @@
       "category": "vegetable",
       "added_on": "2026-03-22",
       "days_until_expiry": 30
+    },
+    {
+      "name": "Butternut Squash",
+      "quantity": "2.75 lb",
+      "expiry_date": "2026-04-21",
+      "category": "vegetable",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 30
+    },
+    {
+      "name": "Spaghetti Squash",
+      "quantity": "3.39 lb",
+      "expiry_date": "2026-04-21",
+      "category": "vegetable",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 30
     }
   ],
-  "last_updated": "2026-03-22T15:14:41"
+  "last_updated": "2026-03-22T15:26:48"
 }
