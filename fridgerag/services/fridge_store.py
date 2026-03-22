@@ -58,7 +58,7 @@ def load_fridge() -> dict[str, Any]:
             save_fridge(empty)
             return empty
 
-        with DATA_FILE.open("r", encoding="utf-8") as f:
+        with DATA_FILE.open("r", encoding="utf-8-sig") as f:
             raw = json.load(f)
 
         data = _ensure_shape(raw)

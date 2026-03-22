@@ -21,6 +21,13 @@ _PROMPT = (
     "Example: [{\"name\": \"Eggs\", \"quantity\": \"12 units\", \"category\": \"dairy\", \"estimated_expiry_days\": 21}]"
 )
 
+_MODEL_CANDIDATES = [
+    "gemini-1.5-flash",
+    "gemini-flash-latest",
+    "gemini-2.0-flash",
+    "gemini-2.5-flash",
+]
+
 
 def _extract_json_array(text: str) -> list[dict[str, Any]]:
     cleaned = text.strip()
@@ -88,17 +95,27 @@ def _extract_sync(image_bytes: bytes) -> list[dict[str, Any]]:
         raise RuntimeError("GEMINI_API_KEY is missing")
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = None
+    last_error: Exception | None = None
+    for model_name in _MODEL_CANDIDATES:
+        try:
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(
+                [
+                    _PROMPT,
+                    {
+                        "mime_type": "image/jpeg",
+                        "data": image_bytes,
+                    },
+                ]
+            )
+            break
+        except Exception as exc:
+            last_error = exc
+            continue
 
-    response = model.generate_content(
-        [
-            _PROMPT,
-            {
-                "mime_type": "image/jpeg",
-                "data": image_bytes,
-            },
-        ]
-    )
+    if response is None:
+        raise RuntimeError(f"No compatible Gemini model available: {last_error}")
 
     text = (response.text or "").strip()
     parsed = _extract_json_array(text)
