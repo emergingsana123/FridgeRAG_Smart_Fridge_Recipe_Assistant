@@ -8,7 +8,7 @@ from typing import Any
 
 import google.generativeai as genai
 
-_ALLOWED_CATEGORIES = {"dairy", "meat", "vegetable", "fruit", "grain", "other"}
+_ALLOWED_CATEGORIES = {"dairy", "meat", "vegetable", "fruit", "grain"}
 
 _PROMPT = (
     "You are a grocery receipt parser. Extract ALL food items from this receipt.\n"
@@ -16,7 +16,7 @@ _PROMPT = (
     "Each item must have these exact fields:\n"
     "  name: string (clean grocery item name)\n"
     "  quantity: string (e.g. \"2 units\", \"500g\")\n"
-    "  category: string (dairy/meat/vegetable/fruit/grain/other)\n"
+    "  category: string (dairy/meat/vegetable/fruit/grain)\n"
     "  estimated_expiry_days: integer (realistic shelf life in days from today)\n"
     "Example: [{\"name\": \"Eggs\", \"quantity\": \"12 units\", \"category\": \"dairy\", \"estimated_expiry_days\": 21}]"
 )
