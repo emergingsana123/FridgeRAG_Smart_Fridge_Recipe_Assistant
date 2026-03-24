@@ -1,12 +1,20 @@
 {
   "items": [
     {
-      "name": "Spinach",
-      "quantity": "1 bunch",
-      "expiry_date": "2026-03-24",
-      "category": "vegetable",
+      "name": "Chicken Drumsticks",
+      "quantity": "1 unit",
+      "expiry_date": "2026-03-25",
+      "category": "meat",
       "added_on": "2026-03-22",
-      "days_until_expiry": 2
+      "days_until_expiry": 3
+    },
+    {
+      "name": "DRUMSTICK KK",
+      "quantity": "unknown",
+      "expiry_date": "2026-03-25",
+      "category": "meat",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 3
     },
     {
       "name": "Banana Cavendish",
@@ -19,6 +27,14 @@
     {
       "name": "Bananas",
       "quantity": "1.92 lb",
+      "expiry_date": "2026-03-27",
+      "category": "fruit",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 5
+    },
+    {
+      "name": "Strawberries",
+      "quantity": "114 units",
       "expiry_date": "2026-03-27",
       "category": "fruit",
       "added_on": "2026-03-22",
@@ -73,6 +89,30 @@
       "days_until_expiry": 7
     },
     {
+      "name": "SMILES",
+      "quantity": "unknown",
+      "expiry_date": "2026-03-29",
+      "category": "other",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 7
+    },
+    {
+      "name": "Tomato",
+      "quantity": "0.225 kg",
+      "expiry_date": "2026-03-29",
+      "category": "vegetable",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 7
+    },
+    {
+      "name": "Scallions",
+      "quantity": "1 unit",
+      "expiry_date": "2026-03-29",
+      "category": "vegetable",
+      "added_on": "2026-03-22",
+      "days_until_expiry": 7
+    },
+    {
       "name": "Lettuce Iceberg",
       "quantity": "1 unit",
       "expiry_date": "2026-04-01",
@@ -81,53 +121,13 @@
       "days_until_expiry": 10
     },
     {
-      "name": "Brussel Sprouts",
-      "quantity": "0.322kg",
-      "expiry_date": "2026-04-01",
-      "category": "vegetable",
+      "name": "SPAGHETTI",
+      "quantity": "unknown",
+      "expiry_date": "2027-03-22",
+      "category": "grain",
       "added_on": "2026-03-22",
-      "days_until_expiry": 10
-    },
-    {
-      "name": "Grapes Green",
-      "quantity": "1.174kg",
-      "expiry_date": "2026-04-01",
-      "category": "fruit",
-      "added_on": "2026-03-22",
-      "days_until_expiry": 10
-    },
-    {
-      "name": "Eggs",
-      "quantity": "12 units",
-      "expiry_date": "2026-04-12",
-      "category": "dairy",
-      "added_on": "2026-03-22",
-      "days_until_expiry": 21
-    },
-    {
-      "name": "Potatoes Brushed",
-      "quantity": "1.328kg",
-      "expiry_date": "2026-04-21",
-      "category": "vegetable",
-      "added_on": "2026-03-22",
-      "days_until_expiry": 30
-    },
-    {
-      "name": "Butternut Squash",
-      "quantity": "2.75 lb",
-      "expiry_date": "2026-04-21",
-      "category": "vegetable",
-      "added_on": "2026-03-22",
-      "days_until_expiry": 30
-    },
-    {
-      "name": "Spaghetti Squash",
-      "quantity": "3.39 lb",
-      "expiry_date": "2026-04-21",
-      "category": "vegetable",
-      "added_on": "2026-03-22",
-      "days_until_expiry": 30
+      "days_until_expiry": 365
     }
   ],
-  "last_updated": "2026-03-22T15:26:48"
+  "last_updated": "2026-03-22T22:22:26"
 }
